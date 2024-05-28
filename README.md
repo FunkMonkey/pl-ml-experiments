@@ -6,6 +6,10 @@ This repository contains the code for various ML experiments. It is structured a
   - this may one day be extracted into an external repository
 - `experiments` - code for running experiments (e.g. training runs etc.)
 
+## More adaptive / personalized learning projects
+
+See also [adlete - adaptive learning engine](https://gitlab.com/adaptive-learning-engine).
+
 ## Requirements
 
 This repo uses [Pixi](https://pixi.sh) as a package manager.
