@@ -1,0 +1,7 @@
+[project]
+name = "adlete"
+version = "0.1.0"
+description = "Various reusable utilities"
+authors = [{ name = "and.selm@gmail.com", email = "and.selm@gmail.com" }]
+requires-python = ">= 3.11"
+dependencies = []

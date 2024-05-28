@@ -1,0 +1,119 @@
+{
+  "$defs": {
+    "AdamOptimizerConfig": {
+      "properties": {
+        "type": {
+          "const": "Adam",
+          "default": "Adam",
+          "description": "Type of optimizer to use, fixed to 'Adam'.",
+          "enum": [
+            "Adam"
+          ],
+          "title": "Optimizer Type",
+          "type": "string"
+        },
+        "lr": {
+          "default": 0.001,
+          "title": "Learning Rate",
+          "type": "number"
+        }
+      },
+      "title": "AdamOptimizerConfig",
+      "type": "object"
+    },
+    "CustomOptimizerConfig": {
+      "properties": {
+        "type": {
+          "const": "Custom",
+          "default": "Custom",
+          "description": "Type of optimizer to use, fixed to 'Custom'.",
+          "enum": [
+            "Custom"
+          ],
+          "title": "Optimizer Type",
+          "type": "string"
+        },
+        "lr": {
+          "default": 0.001,
+          "title": "Learning Rate",
+          "type": "number"
+        }
+      },
+      "title": "CustomOptimizerConfig",
+      "type": "object"
+    },
+    "OptimizationConfig": {
+      "properties": {
+        "optimizer": {
+          "description": "Configuration of the optimizer.",
+          "discriminator": {
+            "mapping": {
+              "Adam": "#/$defs/AdamOptimizerConfig",
+              "Custom": "#/$defs/CustomOptimizerConfig"
+            },
+            "propertyName": "type"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/CustomOptimizerConfig"
+            },
+            {
+              "$ref": "#/$defs/AdamOptimizerConfig"
+            }
+          ],
+          "title": "Optimizer"
+        }
+      },
+      "required": [
+        "optimizer"
+      ],
+      "title": "OptimizationConfig",
+      "type": "object"
+    },
+    "TrainingConfig": {
+      "properties": {
+        "trainer": {
+          "allOf": [
+            {
+              "$ref": "../torch/lightning_utils/config_schema.json#/$defs/TrainerConfig"
+            }
+          ],
+          "description": "Configuration of the Lightning Trainer class",
+          "title": "Lightning Trainer"
+        },
+        "optimization": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/OptimizationConfig"
+            }
+          ],
+          "description": "Configuration of the optimization step.",
+          "title": "Optimization"
+        },
+        "batch_size": {
+          "description": "The size of a single batch.",
+          "title": "Batch Size",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "trainer",
+        "optimization",
+        "batch_size"
+      ],
+      "title": "TrainingConfig",
+      "type": "object"
+    }
+  },
+  "description": "Just a helper class for pydantic, so we can create our json-schema from a single root",
+  "properties": {
+    "training": {
+      "$ref": "#/$defs/TrainingConfig"
+    }
+  },
+  "required": [
+    "training"
+  ],
+  "title": "TrainingConfigRoot",
+  "type": "object"
+}

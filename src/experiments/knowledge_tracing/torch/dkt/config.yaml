@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=./config_schema.json
+
+# TODO: add support for variables in order to shorten the file paths
+
+dataset:
+  datasets_dir: ../../../../../../data/knowledge_tracing/datasets
+  dataset_id: assistment-2015
+
+model:
+  num_questions: -1 # this is going to be overriden, but must be here for pydantic validation
+  use_embeddings: false
+  embedding_size: 100
+  lstm_hidden_size: 100
+
+
+training:
+  trainer:
+    default_root_dir: ../../../../../../data/training/dkt
+    max_epochs: 100
+  batch_size: 2
+
+  optimization:
+    optimizer:
+      type: Adam
+      lr: 0.01

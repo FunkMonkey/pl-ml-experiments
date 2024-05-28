@@ -1,0 +1,61 @@
+{
+  "$defs": {
+    "TrainerConfig": {
+      "description": "Configuration for Trainer class constructor",
+      "properties": {
+        "default_root_dir": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Default path for logs and weights when no logger or lightning.pytorch.callbacks.ModelCheckpoint callback passed. On certain clusters you might want to separate where logs and checkpoints are stored. If you don\u2019t then use this argument for convenience. Paths can be local paths or remote paths such as s3://bucket/path or hdfs://path/. Credentials will need to be set up to use remote filepaths.",
+          "title": "Default Root Directory"
+        },
+        "max_epochs": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Stop training once this number of epochs is reached. Disabled by default (None). If both max_epochs and max_steps are not specified, defaults to max_epochs = 1000. To enable infinite training, set max_epochs = -1.",
+          "title": "Maximum number of epochs"
+        },
+        "min_epochs": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Force training for at least these many epochs. Disabled by default (None).",
+          "title": "Minimum number of epochs"
+        }
+      },
+      "title": "TrainerConfig",
+      "type": "object"
+    }
+  },
+  "description": "Just a helper class for pydantic, so we can create our json-schema from a single root",
+  "properties": {
+    "trainer": {
+      "$ref": "#/$defs/TrainerConfig"
+    }
+  },
+  "required": [
+    "trainer"
+  ],
+  "title": "LightningConfigRoot",
+  "type": "object"
+}

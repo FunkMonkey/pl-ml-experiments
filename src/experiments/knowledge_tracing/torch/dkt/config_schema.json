@@ -1,0 +1,51 @@
+{
+  "$defs": {
+    "DKTModelConfig": {
+      "properties": {
+        "num_questions": {
+          "title": "Num Questions",
+          "type": "integer"
+        },
+        "use_embeddings": {
+          "title": "Use Embeddings",
+          "type": "boolean"
+        },
+        "embedding_size": {
+          "title": "Embedding Size",
+          "type": "integer"
+        },
+        "lstm_hidden_size": {
+          "title": "Lstm Hidden Size",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "num_questions",
+        "use_embeddings",
+        "embedding_size",
+        "lstm_hidden_size"
+      ],
+      "title": "DKTModelConfig",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "dataset": {
+      "$ref": "../../datasets/config_schema.json#/$defs/KTDatasetConfig"
+    },
+    "model": {
+      "$ref": "#/$defs/DKTModelConfig"
+    },
+    "training": {
+      "$ref": "../../../../../adlete_packages/src/adlete/training/config_schema.json#/$defs/TrainingConfig"
+    }
+  },
+  "required": [
+    "dataset",
+    "model",
+    "training"
+  ],
+  "title": "DKTConfigFile",
+  "type": "object"
+}

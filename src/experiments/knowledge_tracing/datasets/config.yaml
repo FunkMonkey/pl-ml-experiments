@@ -1,0 +1,10 @@
+download_dir: ../../../../../data/knowledge_tracing/datasets/downloads
+datasets_dir: ../../../../../data/knowledge_tracing/datasets
+
+datasets:
+  - assistment-2009-2010-skill
+  - assistment-2012-2013-non-skill
+  - assistment-2015
+  - assistment-2017
+
+

@@ -1,0 +1,67 @@
+{
+  "$defs": {
+    "DownloadDatasetsConfigFile": {
+      "properties": {
+        "datasets": {
+          "description": "Datasets to download.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Datasets",
+          "type": "array"
+        },
+        "download_dir": {
+          "title": "Download Directory",
+          "type": "string"
+        },
+        "datasets_dir": {
+          "description": "Directory, where the preprocessed datasets will be saved.",
+          "title": "Datasets Directory",
+          "type": "string"
+        }
+      },
+      "required": [
+        "datasets",
+        "download_dir",
+        "datasets_dir"
+      ],
+      "title": "DownloadDatasetsConfigFile",
+      "type": "object"
+    },
+    "KTDatasetConfig": {
+      "properties": {
+        "datasets_dir": {
+          "description": "Directory, in which the datasets are located.",
+          "title": "Datasets Directory",
+          "type": "string"
+        },
+        "dataset_id": {
+          "description": "Id of the dataset to use.",
+          "title": "Dataset Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "datasets_dir",
+        "dataset_id"
+      ],
+      "title": "KTDatasetConfig",
+      "type": "object"
+    }
+  },
+  "description": "Just a helper class for pydantic, so we can create our json-schema from a single root",
+  "properties": {
+    "kt_dataset": {
+      "$ref": "#/$defs/KTDatasetConfig"
+    },
+    "download_datasets": {
+      "$ref": "#/$defs/DownloadDatasetsConfigFile"
+    }
+  },
+  "required": [
+    "kt_dataset",
+    "download_datasets"
+  ],
+  "title": "KTDatasetConfigRoot",
+  "type": "object"
+}
