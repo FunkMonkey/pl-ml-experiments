@@ -1,7 +1,7 @@
 [project]
 name = "pl-ml-experiments"
 version = "0.1.0"
-description = "Add a short description here"
+description = "Personalized Learning Experiments with Machine Learning "
 authors = [{ name = "and.selm@gmail.com", email = "and.selm@gmail.com" }]
 requires-python = ">= 3.11"
 dependencies = ["edudata"]
@@ -43,5 +43,4 @@ tensorboard = ">=2.16.2,<2.17"
 line-length = 100
 
 [tool.isort]
-# basically profile black except line_length
 line_length = 100
